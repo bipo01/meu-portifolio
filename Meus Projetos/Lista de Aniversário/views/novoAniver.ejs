@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/styles/style.css" />
+  </head>
+  <body>
+    <form action="/novo-aniversariante" method="post">
+      <div class="nomeForm">
+        <label for="nome">Nome do Aniversariante</label>
+        <input required type="text" name="nome" id="nome" />
+      </div>
+      <div class="dataAniverForm">
+        <label for="dataAniver">Data de Aniversário</label>
+        <input
+          required
+          placeholder="Dia"
+          type="text"
+          name="dataAniver"
+          id="dataAniver"
+        />
+        <label class="barra" for="barra">/</label>
+        <input
+          required
+          placeholder="Mês"
+          type="text"
+          name="dataAniver1"
+          id="dataAniver1"
+        />
+      </div>
+      <button class="addAniver" type="submit">Adicionar</button>
+    </form>
+  </body>
+</html>

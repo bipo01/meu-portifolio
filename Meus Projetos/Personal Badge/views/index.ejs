@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Personal Badge</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="main">
+        <div class="addPerson">
+          <form action="/add" method="post">
+            <fieldset>
+              <legend>Coloque seus dados</legend>
+              <div class="nomeESobrenome">
+                <input
+                  required
+                  autocomplete="off"
+                  type="text"
+                  name="nome"
+                  id="nome"
+                  placeholder="Seu nome"
+                />
+                <input
+                  required
+                  autocomplete="off"
+                  type="text"
+                  name="sobrenome"
+                  id="sobrenome"
+                  placeholder="Seu sobrenome"
+                />
+                <select name="ocupacao" id="ocupacao" required>
+                  <option disabled selected hidden>Ocupação</option>
+                  <option value="Estudante">Estudante</option>
+                  <option value="Programação">Programação</option>
+                  <option value="Psicologia">Psicologia</option>
+                  <option value="Vendas">Vendas</option>
+                  <option value="Enfermagem">Enfermagem</option>
+                </select>
+              </div>
+              <div class="idadeECPF">
+                <input
+                  autocomplete="off"
+                  type="number"
+                  name="idade"
+                  id="idade"
+                  placeholder="Sua idade"
+                />
+                <input
+                  required
+                  type="number"
+                  name="cpf"
+                  id="cpf"
+                  placeholder="CPF"
+                />
+                <input
+                  required
+                  type="submit"
+                  name="enviar"
+                  id="enviar"
+                  value="Enviar"
+                />
+              </div>
+            </fieldset>
+          </form>
+        </div>
+
+        <div class="filtro">
+          <form action="/" method="post">
+            <fieldset class="filtroField">
+              <legend>Filtrar ocupações</legend>
+              <select name="ocupacaoFiltrada" id="ocupacaoFiltro" required>
+                <option value="Todas">Todas</option>
+                <option value="Estudante">Estudante</option>
+                <option value="Programação">Programação</option>
+                <option value="Psicologia">Psicologia</option>
+                <option value="Vendas">Vendas</option>
+                <option value="Enfermagem">Enfermagem</option>
+              </select>
+              <input
+                type="submit"
+                name="enviarFiltro"
+                id="enviarFiltro"
+                value="Filtrar"
+              />
+            </fieldset>
+          </form>
+        </div>
+
+        <% if (locals.data) { %> <% if (data.length > 0) { %> <% } %> <% if
+        (data.length > 0) { %> <% for( let i = 0; i < data.length; i++ ) { %>
+        <div class="cardPerson">
+          <div class="azul"></div>
+
+          <div class="verde">
+            <h1><%= data[i].nome %> <%= data[i].sobrenome %></h1>
+            <h3><%= data[i].idade %></h3>
+            <h3><%= data[i].cpf %></h3>
+            <h3><%= data[i].ocupacao%></h3>
+            <form action="/delete" method="post">
+              <input type="hidden" name="deletar" value="<%= data[i].nome%>" />
+              <input type="submit" name="deletar" id="deletar" value="🗑" />
+            </form>
+          </div>
+        </div>
+        <% } %> <% } %> <% } %>
+      </div>
+    </div>
+  </body>
+</html>

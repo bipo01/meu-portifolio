@@ -1,0 +1,102 @@
+body {
+    background-color: #e5e5f7;
+
+    background-image: radial-gradient(
+        ellipse farthest-corner at 10px 10px,
+        #444cf7,
+        #444cf7 50%,
+        #e5e5f7 50%
+    );
+    background-size: 10px 10px;
+}
+
+.container {
+    background: white;
+    width: 50%;
+    margin: 20px auto;
+    text-align: center;
+    padding: 0.5rem;
+    border-radius: 10px;
+}
+
+.respostas {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+li {
+    background: rgb(201, 200, 200);
+    margin: 2px;
+    list-style: none;
+    text-align: center;
+    font-size: 1.3rem;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+li:hover {
+    background: rgba(201, 200, 200, 0.318);
+}
+
+.answer {
+    display: none;
+}
+
+.respostaCorreta {
+    background: green;
+    cursor: none;
+    color: white;
+    font-size: 1.5rem;
+    padding: 8px 10px;
+}
+
+.respostaErrada {
+    background: red;
+    cursor: none;
+    color: white;
+}
+
+.respostaCorreta:hover {
+    background: green;
+    cursor: none;
+}
+.respostaErrada:hover {
+    background: red;
+    cursor: none;
+}
+
+.restart {
+    margin-top: 10px;
+    padding: 10px;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+
+.novoQuiz {
+    width: 50%;
+    background: white;
+    margin: 2rem auto;
+    padding: 2rem;
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.134);
+}
+
+.novoQuiz form {
+    display: flex;
+    flex-direction: column;
+}
+
+.novoQuiz form input {
+    padding: 0.5rem;
+    margin: 2px;
+    border-radius: 5px;
+}
+
+.idQuestion {
+    display: flex;
+    justify-content: space-between;
+}

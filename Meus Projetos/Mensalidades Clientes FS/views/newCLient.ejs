@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Novo Cliente</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <div class="container">
+            <form action="/add" method="post">
+                <input
+                    type="text"
+                    name="nomeCliente"
+                    id="nomeCliente"
+                    placeholder="Nome Cliente"
+                />
+
+                <input type="submit" id="addClientBtn" value="Add" />
+            </form>
+            <form action="/clientInfo" method="get">
+                <input
+                    type="submit"
+                    id="listaDeClientesBtn"
+                    value="Lista de Clientes"
+                />
+            </form>
+        </div>
+    </body>
+</html>

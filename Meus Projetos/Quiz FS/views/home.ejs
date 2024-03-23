@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Quiz App</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <% if (data) { %>
+        <div class="container">
+            <h1>Quiz</h1>
+            <h2 class="questionId"><%= data.question %></h2>
+            <p class="answer"><%= data.correct %></p>
+            <div class="respostas">
+                <% for( let i = 0; i < data.respostas.length; i++ ) { %>
+                <li><%= data.respostas[i] %></li>
+                <% } %>
+            </div>
+            <span class="idQuestion"
+                >ID: <%= data.id %>
+                <a href="/deletar/<%= data.id %>">🗑️</a></span
+            >
+        </div>
+        <% } %>
+
+        <div class="novoQuiz">
+            <form action="/novoQuiz" method="post">
+                <input type="text" name="question" placeholder="Pergunta?" />
+
+                <input type="text" name="respostaA" placeholder="1º Resposta" />
+                <input type="text" name="respostaB" placeholder="2º Resposta" />
+                <input type="text" name="respostaC" placeholder="3º Resposta" />
+
+                <input
+                    type="text"
+                    name="correct"
+                    placeholder="Resposta Correta"
+                />
+                <input
+                    type="submit"
+                    name="submitBtn"
+                    value="Adicionar nova questão"
+                />
+            </form>
+        </div>
+
+        <script>
+            const answer = document.querySelector(".answer").textContent;
+            let restartOn = false;
+            for (let i = 0; i < document.querySelectorAll("li").length; i++) {
+                document
+                    .querySelectorAll("li")
+                    [i].addEventListener("click", (e) => {
+                        const element = e.target.textContent;
+
+                        const valor =
+                            document.querySelectorAll("li")[i].textContent;
+
+                        for (
+                            let j = 0;
+                            j < document.querySelectorAll("li").length;
+                            j++
+                        ) {
+                            if (
+                                document
+                                    .querySelectorAll("li")
+                                    [j].textContent.includes(answer)
+                            ) {
+                                document
+                                    .querySelectorAll("li")
+                                    [j].classList.add("respostaCorreta");
+                            } else {
+                                document
+                                    .querySelectorAll("li")
+                                    [j].classList.add("respostaErrada");
+                            }
+                        }
+
+                        restartOn = true;
+                    });
+            }
+
+            const restart = document.createElement("button");
+            restart.textContent = "Restart";
+            restart.classList.add("restart");
+            document.querySelector(".respostas").appendChild(restart);
+
+            document.querySelector(".restart").addEventListener("click", () => {
+                location.reload();
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,99 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    background: gray;
+}
+
+.container {
+    width: 70%;
+    margin: 20px auto;
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container .palavraEscolhida {
+    margin-bottom: 100px;
+    text-align: center;
+}
+
+.container .alfabeto {
+    width: 45%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.container .alfabeto p {
+    border: 1px solid black;
+    width: 40px;
+    text-align: center;
+    font-size: 2rem;
+    margin: 2px;
+    border-radius: 5px;
+}
+.container .alfabeto .pSemClique:hover {
+    background: rgba(0, 0, 0, 0.207);
+    cursor: pointer;
+}
+
+.hidden {
+    color: white;
+    width: 40px;
+    border-bottom: 3px solid black;
+    user-select: none;
+}
+
+h2 {
+    display: flex;
+    justify-content: center;
+    font-size: 3rem;
+}
+
+h2 p {
+    font-size: 3rem;
+    border-bottom: 2px solid black;
+    margin: 3px;
+}
+
+.venceu {
+    color: green;
+}
+
+.clicado {
+    background: rgba(128, 128, 128, 0.34);
+}
+
+.recomecar {
+    cursor: pointer;
+    margin: 0 auto;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    background: green;
+    font-size: 1.3rem;
+    color: white;
+}
+
+.palavraEscondida {
+    display: none;
+}
+
+h4 {
+    margin-top: 1rem;
+}
+
+.bordaAbaixo {
+    border-bottom: 3px solid black;
+    padding: 10px;
+    margin-top: 3rem;
+}

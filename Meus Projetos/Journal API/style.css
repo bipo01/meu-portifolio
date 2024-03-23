@@ -1,0 +1,122 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, cyan, blue);
+    height: 100vh;
+}
+
+.container {
+    background: white;
+    width: 80%;
+    margin: 30px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 30px;
+    justify-content: center;
+}
+
+.container div {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+}
+
+.posts {
+    display: flex;
+    align-items: center;
+}
+
+.btnAdicionar {
+    text-decoration: none;
+    padding: 1.2rem 1.5rem;
+    color: white;
+    background: rgb(74, 129, 129);
+    font-weight: bold;
+    border-radius: 10px;
+    margin: 2rem 0;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+}
+
+.btnAdicionar:hover {
+    background: rgba(74, 129, 129, 0.67);
+}
+
+.post {
+    background: rgba(0, 0, 0, 0.518);
+    width: 100%;
+    margin: 10px 0;
+    padding: 30px;
+    padding-top: 10px;
+    border-radius: 20px;
+    color: white;
+    word-wrap: break-word;
+}
+
+.post h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.post .postPostado {
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.post .categoria {
+    margin-top: 50px;
+}
+
+.dadosPost {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.dataPublicacao {
+    display: flex;
+    justify-content: space-between;
+}
+
+.dataPublicacao a {
+    text-decoration: none;
+    font-size: 2rem;
+}
+
+.novoPost {
+    width: 100%;
+}
+
+.novoPost input {
+    padding: 1.3rem;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background: rgb(97, 116, 116);
+    color: white;
+    font-size: 18px;
+    margin: 5px 0;
+    word-wrap: break-word;
+}
+
+.novoPost input::placeholder {
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+
+.addNovoPost {
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 4rem;
+    cursor: pointer;
+    width: fit-content;
+    margin: 0 auto;
+}

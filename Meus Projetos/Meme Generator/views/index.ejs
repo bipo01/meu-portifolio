@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Meme Generator</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <div class="meme-generator">
+            <button class="generate-meme-btn">Generate Meme</button>
+
+            <% if (data) { %>
+            <h2 class="meme-title"><%= data.title %></h2>
+
+            <img src="<%= data.preview[3] %>" alt="" />
+            <div class="meme-author"><%= data.author %></div>
+            <% } else { %>
+            <h2 class="meme-title">Loading...</h2>
+
+            <img src="" alt="" />
+            <div class="meme-author"></div>
+
+            <% }%>
+        </div>
+
+        <script>
+            document.querySelector("button").addEventListener("click", () => {
+                location.reload();
+            });
+        </script>
+    </body>
+</html>

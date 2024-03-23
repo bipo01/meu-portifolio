@@ -1,0 +1,94 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: linear-gradient(125deg, #3d2e46 50%, #8621c5 50%);
+}
+
+h1 {
+  margin: 10px;
+  color: #302b33;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.btnCreateNew,
+#submit,
+button {
+  margin: 10px;
+  font-size: 1.2rem;
+  padding: 5px;
+  cursor: pointer;
+  border: 0;
+  background: #b154ea;
+  color: white;
+  border-radius: 8px;
+}
+
+.caixaNota {
+  margin: 50px 10px;
+  width: 300px;
+  height: 200px;
+  border: 1px solid black;
+}
+
+li {
+  font-size: 1.5rem;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+#nota {
+  width: 600px;
+  height: 200px;
+  margin: 10px;
+  display: block;
+  padding: 10px;
+  font-size: 1.4rem;
+  border: 2px solid #b154ea;
+  border-radius: 10px;
+  margin-top: 50px;
+}
+
+.hidden {
+  display: none;
+}
+
+ul {
+  margin: 10px;
+}
+
+.container {
+  width: 700px;
+  min-height: 100px;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.201);
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.titleNewNote {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.notaExibida {
+  width: 100%;
+  margin: 5px auto;
+  background: #766ea2;
+  border: 1px solid #3f2e46;
+  border-radius: 5px;
+  color: white;
+  padding: 10px;
+}
+
+.btnMostrarNotas {
+  margin-top: 20px;
+}

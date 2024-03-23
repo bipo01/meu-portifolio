@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notes</title>
+    <link rel="stylesheet" href="/styles/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="titleNewNote">
+        <h1>📰NOTES</h1>
+        <button class="btnCreateNew">Create a New Note</button>
+      </div>
+
+      <form class="addnota" action="/addNote" method="post">
+        <input type="textarea" name="nota" id="nota" />
+        <input type="submit" name="submit" id="submit" value="Salvar nota" />
+      </form>
+      <div class="btnMostrarNotas">
+        <button class="mostrarNotas">Mostrar notas</button>
+      </div>
+      <ul>
+        <% for( let i = 0; i < todasNotas.length; i++ ) { %>
+        <li>
+          <div class="notaExibida"><%= todasNotas[i] %></div>
+          <div class="btnExcluir">
+            <form action="/delete" method="post">
+              <input type="hidden" name="notaId" value="<%= todasIds[i] %>" />
+              <button type="submit">🗑</button>
+            </form>
+          </div>
+        </li>
+        <% } %>
+      </ul>
+    </div>
+
+    <script>
+      document.querySelector("ul").classList.add("hidden");
+      document.querySelector(".addnota").classList.add("hidden");
+      document.querySelector(".btnCreateNew").addEventListener("click", () => {
+        document.querySelector("form").classList.remove("hidden");
+      });
+
+      document.querySelector(".mostrarNotas").addEventListener("click", () => {
+        document.querySelector("ul").classList.toggle("hidden");
+        let btnMostrarNotas = document.querySelector(".mostrarNotas");
+        if (btnMostrarNotas.innerHTML === "Esconder notas") {
+          document.querySelector(".mostrarNotas").innerHTML = "Mostrar notas";
+        } else {
+          document.querySelector(".mostrarNotas").innerHTML = "Esconder notas";
+        }
+      });
+    </script>
+  </body>
+</html>
