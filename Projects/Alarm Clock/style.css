@@ -1,0 +1,108 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background: #377dff;
+}
+
+.hide {
+    display: none;
+}
+
+.container {
+    background: #ffffff;
+    width: 750px;
+    height: fit-content;
+    margin: 30px auto;
+    border-radius: 25px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.259);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 1.2rem;
+}
+
+.inputs input {
+    font-size: 1.4rem;
+    width: 60px;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    background: rgba(128, 128, 128, 0.485);
+    text-align: center;
+}
+
+.inputAlarme span {
+    font-size: 2rem;
+}
+
+#adicionarAlarme {
+    border: none;
+    width: fit-content;
+    height: fit-content;
+    padding: 10px 30px;
+    border-radius: 10px;
+    background: #1e69f4;
+    cursor: pointer;
+    font-weight: bold;
+    color: white;
+    font-size: 16px;
+}
+
+.alarmes {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.alarme {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.alarmeIn {
+    flex: 1;
+}
+
+.alarmeIn {
+    display: flex;
+    gap: 20px;
+    text-align: center;
+    justify-content: center;
+    width: 40%;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    background: #377dff17;
+    border-radius: 10px;
+}
+
+.alarmeIn span {
+    font-size: 1.5rem;
+}
+
+.inputAlarme {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.deletarBtn {
+    padding: 0;
+    margin: 0;
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 1.6rem;
+    cursor: pointer;
+}

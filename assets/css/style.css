@@ -14,9 +14,26 @@ body {
     color: #272829;
 }
 
+small {
+    display: block;
+    font-style: italic;
+    width: 400px;
+}
+
+#div-bg {
+    background: rgba(0, 0, 0, 0.494) !important;
+    width: fit-content;
+    border-radius: 20px;
+    padding: 10px 150px;
+}
+
 a {
     color: #149ddd;
     text-decoration: none;
+}
+
+#h1Profile {
+    margin-top: 15px !important;
 }
 
 a:hover {
