@@ -1,86 +1,138 @@
-const cards = document.querySelectorAll(".card");
-let arr = [
-    "img-1",
-    "img-2",
-    "img-3",
-    "img-4",
-    "img-5",
-    "img-6",
-    "img-7",
-    "img-8",
-    "img-1",
-    "img-2",
-    "img-3",
-    "img-4",
-    "img-5",
-    "img-6",
-    "img-7",
-    "img-8",
+const valores = [
+  "1",
+  "1",
+  "2",
+  "2",
+  "3",
+  "3",
+  "4",
+  "4",
+  "5",
+  "5",
+  "6",
+  "6",
+  "7",
+  "7",
+  "8",
+  "8",
 ];
-arr.sort(() => (Math.random() > 0.5 ? 1 : -1));
-console.log(arr);
+const total = new Set(valores);
+let randons = [];
+let vidas;
 
-const pairs = [];
-const reveals = [];
-const indexes = [];
+document.querySelectorAll(".btnsDificuldade").forEach((el) => {
+  el.addEventListener("click", () => {
+    const nivel = el.textContent;
+    console.log(nivel);
+    switch (nivel) {
+      case "Fácil":
+        vidas = 20;
+        break;
 
-let count = 0;
+      case "Médio":
+        vidas = 15;
+        break;
 
-cards.forEach((card, i) => {
-    card.children[1].children[0].src =
-        card.children[1].children[0].src.split("/").slice(0, -1).join("/") +
-        "/" +
-        arr[i] +
-        ".png";
+      case "Difícil":
+        vidas = 10;
+        break;
+    }
 
-    card.addEventListener("click", () => {
-        count++;
-        card.children[1].style.transform = "rotateY(0)";
+    document.querySelector(".container").classList.remove("hidden");
+    document.querySelector(".header").classList.remove("hidden");
+    document.querySelector(".dificuldade").classList.add("hidden");
 
-        reveals.push(card);
-        indexes.push(i);
+    document.querySelector("#vidas").textContent = vidas;
+  });
+});
 
-        const transformacao = `${card.children[1].style.transform}`;
+while (randons.length < valores.length) {
+  const random = Math.floor(Math.random() * valores.length);
+  if (!randons.includes(random)) {
+    randons.push(random);
+  }
+}
 
-        if (transformacao === "rotateY(0deg)") {
-            card.classList.add("revelado");
+for (let i = 0; i < randons.length; i++) {
+  document.querySelector(".container").insertAdjacentHTML(
+    "afterbegin",
+    `
+      <div class="div-click">
+                  <div class="amostra">?</div>
+                  <div class="conteudo hidden"><img src="./img/img-${
+                    valores[randons[i]]
+                  }.png" alt=""></div>
+              </div>
+              `
+  );
+}
+
+const divs = document.querySelectorAll(".div-click");
+const amostras = document.querySelectorAll(".amostra");
+const conteudos = document.querySelectorAll(".conteudo");
+
+let selecionados = [];
+let acertos = [];
+
+divs.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    if (!btn.classList.contains("selecionado") && selecionados.length < 2) {
+      btn.children[0].classList.add("hidden");
+      btn.children[1].classList.remove("hidden");
+
+      btn.classList.add("selecionado");
+
+      selecionados.push(btn);
+      console.log(selecionados[0]);
+
+      if (selecionados.length === 2) {
+        if (
+          selecionados[0].querySelector(".conteudo").querySelector("img")
+            .src !==
+          selecionados[1].querySelector(".conteudo").querySelector("img").src
+        ) {
+          vidas--;
+          document.querySelector("#vidas").textContent = vidas;
+
+          setTimeout(() => {
+            divs.forEach((btn) => {
+              if (!acertos.includes(btn)) {
+                btn.children[0].classList.remove("hidden");
+                btn.children[1].classList.add("hidden");
+                btn.classList.remove("selecionado");
+              }
+
+              selecionados = [];
+            });
+          }, 500);
+        } else {
+          acertos.push(...selecionados);
+          selecionados = [];
         }
+      }
+    }
+    if (acertos.length === valores.length) {
+      document.querySelector("body").innerHTML = `
+                  <div class="resultado">
+                  <h2>Você ganhou!!!</h2>
+                      <button class="reset">Recomeçar</button>
+                      </div>`;
+      document.querySelector("body").classList.add("vencedor");
+    }
+    if (vidas == 0) {
+      document.querySelector("body").innerHTML = `
+              <div class="resultado">
+              <h2>Você perdeu...</h2>
+                  <button class="reset">Recomeçar</button>
+                  </div>
+                  `;
+      document.querySelector("body").classList.add("perdedor");
+    }
+  });
+});
 
-        if (count === 2) {
-            if (
-                reveals[0].children[1].children[0].src ===
-                    reveals[1].children[1].children[0].src &&
-                indexes[0] !== indexes[1]
-            ) {
-                pairs.push(reveals[0], reveals[1]);
-                console.log(pairs.length);
-
-                reveals.splice(0, reveals.length);
-                indexes.splice(0, reveals.length);
-            } else {
-                setTimeout(() => {
-                    reveals[0].children[1].style.transform = "rotateY(90deg)";
-                    reveals[1].children[1].style.transform = "rotateY(90deg)";
-
-                    reveals[0].classList.remove("revelado");
-                    reveals[1].classList.remove("revelado");
-
-                    reveals.splice(0, reveals.length);
-                    indexes.splice(0, reveals.length);
-                }, 600);
-            }
-
-            if (pairs.length === 16) {
-                setTimeout(() => {
-                    document
-                        .querySelector(".wrapper")
-                        .insertAdjacentHTML(
-                            "beforeend",
-                            "<h2>Parabéns!</h2> <button onclick='location.reload()'>Recomeçar</button>"
-                        );
-                }, 400);
-            }
-            count = 0;
-        }
-    });
+document.addEventListener("click", (e) => {
+  if (e.target.classList.contains("reset")) {
+    location.reload();
+  }
 });

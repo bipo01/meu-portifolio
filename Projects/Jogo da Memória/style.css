@@ -1,74 +1,228 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-
+/* Reset de estilos básicos */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
+/* Corpo da página */
 body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    background: #6563ff;
+  background: #f0f4f8;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
 }
 
-.wrapper {
-    height: 400px;
-    width: 400px;
-    background: white;
-    border-radius: 10px;
-    padding: 25px;
-}
-.cards,
-.card,
-.view {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+/* Contêiner de dificuldade */
+.dificuldade {
+  text-align: center;
+  margin-bottom: 30px;
 }
 
-.cards {
-    height: 100%;
-    width: 100%;
-    flex-wrap: wrap;
-    justify-content: space-between;
+.dificuldade h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #3a86ff;
+  margin-bottom: 1rem;
 }
 
-.cards .card {
-    height: calc(100% / 4 - 10px);
-    width: calc(100% / 4 - 10px);
-    cursor: pointer;
-    position: relative;
+/* Estilo para os botões de dificuldade */
+.btnsDificuldade {
+  padding: 0.75rem 1.5rem;
+  font-size: 1.2rem;
+  background-color: #3a86ff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin: 0.5rem;
 }
 
-.cards .card .view {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    background: #fff;
-    border-radius: 7px;
-    transition: transform 0.25s linear;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
-    backface-visibility: hidden;
+.btnsDificuldade:hover {
+  background-color: #005f73;
+  transform: scale(1.1);
 }
 
-.card .front-view span {
-    color: #6563ff;
-    font-size: 40px;
+/* Cabeçalho do jogo */
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.card .back-view {
-    transform: rotateY(90deg);
+.header h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #333;
 }
 
-.card .back-view img {
-    max-width: 45px;
+p {
+  font-size: 1.5rem;
+  color: #333;
 }
 
-.revelado {
-    cursor: not-allowed;
-    pointer-events: none;
+/* Contêiner da grade do jogo */
+.container {
+  display: grid;
+  grid-template-columns: repeat(4, 80px);
+  grid-template-rows: repeat(4, 80px);
+  gap: 10px;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+/* Estilo das cartas */
+.container div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  border-radius: 8px;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.container div:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Estilo do conteúdo da carta */
+.conteudo {
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.conteudo img {
+  width: 80%;
+}
+
+/* Estilo para os estados de vencedor/perdedor */
+.vencedor {
+  background: #4caf50;
+}
+
+.perdedor {
+  background: #f44336;
+}
+
+/* Botão de recomeçar */
+.reset {
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: white;
+  background-color: #3a86ff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 2rem;
+}
+
+.reset:hover {
+  background-color: #005f73;
+}
+
+/* Estilo para o resultado */
+.resultado {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h2 {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Estilo para as cartas de amostra */
+.amostra {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  color: #333;
+  font-weight: bold;
+}
+
+/* Estilo de esconder elementos */
+.hidden {
+  display: none;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: repeat(4, 60px);
+    grid-template-rows: repeat(4, 60px);
+  }
+
+  .btnsDificuldade {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .header h1 {
+    font-size: 2.5rem;
+  }
+
+  p {
+    font-size: 1.2rem;
+  }
+
+  .reset {
+    font-size: 1.2rem;
+    padding: 0.8rem 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    grid-template-columns: repeat(4, 50px);
+    grid-template-rows: repeat(4, 50px);
+  }
+
+  .btnsDificuldade {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+
+  .reset {
+    font-size: 1rem;
+    padding: 0.7rem 1.2rem;
+  }
+}
+
+.amostra,
+.conteudo {
+  width: 100%;
+  height: 100%;
+}
+.hidden {
+  display: none !important;
 }
