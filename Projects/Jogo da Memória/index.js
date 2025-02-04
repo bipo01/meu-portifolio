@@ -20,6 +20,8 @@ const total = new Set(valores);
 let randons = [];
 let vidas;
 
+/////////FUNÇÔES/////////
+
 document.querySelectorAll(".btnsDificuldade").forEach((el) => {
   el.addEventListener("click", () => {
     const nivel = el.textContent;
