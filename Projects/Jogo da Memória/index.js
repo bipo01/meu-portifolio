@@ -20,7 +20,7 @@ const total = new Set(valores);
 let randons = [];
 let vidas;
 
-/////////FUNÇÔES/////////
+/////////FUNÇÔES//////////
 
 document.querySelectorAll(".btnsDificuldade").forEach((el) => {
   el.addEventListener("click", () => {
